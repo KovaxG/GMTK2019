@@ -3,6 +3,7 @@ extends KinematicBody2D
 var motion = Vector2()
 var hp = 1.0
 var left_holding = false
+var current_level = 1
 
 var textures = {'naked':load("res://GFX/g_prot.png"),
 				'armored':load("res://GFX/a_prot.png"),
@@ -93,9 +94,8 @@ func handle_motion():
 	for area in overlaps:
 		if 'Item' in area.name:
 				PickUpItem(overlaps)	
-		elif area.name == "Weapon":
+		elif area.name == 'Weapon':
 			hp -= 0.015
-	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		UseItem()
 		if not left_holding:
@@ -108,3 +108,13 @@ func handle_motion():
 	motion = move_and_slide(motion)
 	
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
+	
+	
+func CompleteLevel():
+	current_level += 1
+	get_tree().change_scene('Level' + str(current_level) + '.tscn')
+	
+
+func _on_Ladder_body_entered(body):
+	if body.name == 'Player':
+		CompleteLevel()

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://GFX/orc.png" type="Texture" id=2]
+[ext_resource path="res://GFX/nmeweapon2.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 9.75153 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2.75354, 10.5059 )
+
+[node name="Enemy" type="KinematicBody2D"]
+editor/display_folded = true
+position = Vector2( 96.0499, 74.4648 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 3.14159
+scale = Vector2( 1.37389, 1.50711 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.349655, -0.524475 )
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="Weapon" type="Area2D" parent="."]
+position = Vector2( 8.21677, 12.0629 )
+
+[node name="weaponshape" type="CollisionShape2D" parent="Weapon"]
+position = Vector2( -7.16783, 13.1119 )
+rotation = 0.50273
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Weapon"]
+position = Vector2( -5.09152, 10.1686 )
+rotation = -2.6329
+texture = ExtResource( 3 )

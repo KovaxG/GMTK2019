@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://TileScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Armor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Potion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spear.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Club.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65536, 0, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 0, 0, 131072, 0, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 0, 0, 196608, 0, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 2, 0, 196615, 4, 0, 196616, 0, 0, 262144, 0, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 2, 0, 262151, 6, 0, 262152, 0, 0, 327680, 0, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 2, 0, 327687, 0, 0, 327688, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0 )
+
+[node name="ItemArmor" parent="." instance=ExtResource( 2 )]
+position = Vector2( 188.991, 52.6833 )
+
+[node name="ItemPotion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 232.057, 52.6833 )
+
+[node name="ItemSpear" parent="." instance=ExtResource( 4 )]
+position = Vector2( 231.535, 92.7184 )
+rotation = 0.785398
+
+[node name="ItemClub" parent="." instance=ExtResource( 5 )]
+position = Vector2( 149.269, 53.5195 )
+rotation = 0.785398
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+
+[node name="ControlMainAnchor" parent="." instance=ExtResource( 7 )]
+
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
+
+[node name="Ladder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+position = Vector2( 239.918, 144.586 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Ladder" to="Player" method="_on_Ladder_body_entered"]
