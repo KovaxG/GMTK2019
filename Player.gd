@@ -4,6 +4,9 @@ var motion = Vector2()
 var hp = 1.0
 var left_holding = false
 
+var textures = {'naked':load("res://GFX/g_prot.png"),
+				'armored':load("res://GFX/a_prot.png")}
+
 var inventory = null
 var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear']
 var recently_picked_up = false
@@ -15,8 +18,14 @@ func PickUpItem(overlaps):
 			item = area
 			break
 	if item == null:
-		recently_picked_up = false
-		return
+			recently_picked_up = false
+			return
+	else:
+		match item.name:
+			'ItemArmor':
+				hp *= 2.0
+				$Sprite.texture = textures['armored']
+		
 			
 	inventory = item
 	#item.visible = false
@@ -30,6 +39,10 @@ func DropItem():
 		inventory.position.x = position.x + 33
 		inventory.position.y = position.y
 		recently_picked_up = true
+		
+		if inventory.name == 'ItemArmor':
+			hp/=2.0
+			$Sprite.texture = textures['naked']
 		get_parent().find_node('IconItem').texture = null
 		inventory = null
 
@@ -55,7 +68,6 @@ func handle_motion():
 		motion.y = 100
 	if Input.is_action_pressed("ui_up"):
 		motion.y = -100
-		hp -= 0.05
 	if Input.is_action_pressed("ui_left"):
 		motion.x = -100
 	if Input.is_action_pressed("ui_right"):
