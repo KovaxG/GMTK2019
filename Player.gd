@@ -1,7 +1,13 @@
 extends KinematicBody2D
 
 var motion = Vector2()
-var hp = 1.0
+
+var HP = 1.0 setget set_hp
+func set_hp(val):
+	HP = val
+	if HP<0:
+		Lose()
+		
 var left_holding = false
 var current_level = 1
 
@@ -19,6 +25,7 @@ func _ready():
 	$Club/ClubArea.disabled = true
 
 func PickUpItem(overlaps):
+	get_viewport_rect().position = Vector2(200,200)
 	var item = null
 	for area in overlaps:			
 		if area.name in item_names and inventory == null:
@@ -31,7 +38,7 @@ func PickUpItem(overlaps):
 	else:
 		match item.name:
 			'ItemArmor':
-				hp *= 2.0
+				set_hp(HP * 2.0)
 				$Sprite.texture = textures['armored']
 			'ItemClub':
 				$Club.visible = true
@@ -51,7 +58,7 @@ func DropItem():
 		recently_picked_up = true
 		
 		if inventory.name == 'ItemArmor':
-			hp/=2.0
+			set_hp(HP/2.0)
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
@@ -62,7 +69,7 @@ func UseItem():
 	if inventory != null:
 		match inventory.name:
 			'ItemPotion':
-				hp=1
+				set_hp(1)
 				inventory.position.x = -1000
 				inventory.position.y = -1000
 				get_parent().find_node('IconItem').texture = null
@@ -78,7 +85,7 @@ func _physics_process(delta):
 	rotate_to_mouse()
 	handle_motion()
 		
-	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
+	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
 	
 func rotate_to_mouse():
 	var mouse_poz = get_global_mouse_position()
@@ -106,7 +113,7 @@ func handle_motion():
 		if 'Item' in area.name:
 				PickUpItem(overlaps)	
 		elif area.name == 'Weapon':
-			hp -= 0.015
+			set_hp(HP- 0.015)
 			
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		UseItem()
@@ -119,13 +126,15 @@ func handle_motion():
 		
 	motion = move_and_slide(motion)
 	
-	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
+	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
 	
 	
 func CompleteLevel():
 	current_level += 1
 	get_tree().change_scene('Level' + str(current_level) + '.tscn')
 	
+func Lose():
+	get_tree().change_scene('Level' + str(current_level) + '.tscn')
 
 func _on_Ladder_body_entered(body):
 	if body.name == 'Player':

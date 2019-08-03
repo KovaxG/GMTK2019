@@ -54,3 +54,6 @@ texture = ExtResource( 3 )
 [node name="ClubArea" type="CollisionShape2D" parent="Club"]
 position = Vector2( -10.4674, 13.7728 )
 shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
