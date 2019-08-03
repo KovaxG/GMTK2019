@@ -2,12 +2,14 @@ extends KinematicBody2D
 
 var motion = Vector2()
 
+var V_PLAYER = 100
 var HP = 1.0 setget set_hp
 func set_hp(val):
 	HP = val
 	if HP<0:
 		Lose()
-		
+
+
 var left_holding = false
 var current_level = 1
 
@@ -94,19 +96,25 @@ func rotate_to_mouse():
 	# This is needed for some reason because the player is not facing the mouse otherwise
 	rotate(3*PI/2) 
 	
+func handle_keyboard():
+	if Input.is_key_pressed(KEY_S):
+		motion.y = V_PLAYER
+	if Input.is_key_pressed(KEY_W):
+		motion.y = -V_PLAYER
+	if Input.is_key_pressed(KEY_A):
+		motion.x = -V_PLAYER
+	if Input.is_key_pressed(KEY_D):
+		motion.x = V_PLAYER
+	if abs(motion.x) + abs(motion.y) == 2*V_PLAYER:
+		motion.x /= sqrt(2)
+		motion.y /= sqrt(2)
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
+	
 func handle_motion():
 	motion.y = 0
 	motion.x = 0
-	if Input.is_action_pressed("ui_down"):
-		motion.y = 100
-	if Input.is_action_pressed("ui_up"):
-		motion.y = -100
-	if Input.is_action_pressed("ui_left"):
-		motion.x = -100
-	if Input.is_action_pressed("ui_right"):
-		motion.x = 100
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().quit()
+	handle_keyboard()
 	
 	var overlaps = $Area2D.get_overlapping_areas()
 	for area in overlaps:
