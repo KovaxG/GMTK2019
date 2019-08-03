@@ -1,9 +1,21 @@
+<<<<<<< HEAD
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GFX/placeholder.png" type="Texture" id=3]
 [ext_resource path="res://LabelHP.gd" type="Script" id=4]
+=======
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+>>>>>>> 1469d47d519d11cde767f144a62d824f16cf14c5
 
 [node name="World" type="Node2D"]
 
@@ -18,6 +30,7 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+<<<<<<< HEAD
 [node name="ControlMainAnchor" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -27,10 +40,17 @@ margin_left = 33.0
 margin_top = 159.588
 margin_right = 184.0
 margin_bottom = 191.588
+=======
+[node name="Enemy" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 80, 112 )
+script = ExtResource( 3 )
+>>>>>>> 1469d47d519d11cde767f144a62d824f16cf14c5
 __meta__ = {
 "_edit_group_": true
 }
 
+<<<<<<< HEAD
 [node name="HBoxContainer" type="HBoxContainer" parent="ControlMainAnchor/ContainerItem"]
 margin_right = 151.0
 margin_bottom = 32.0
@@ -62,3 +82,13 @@ margin_right = 49.0
 margin_bottom = 18.0
 text = "HP: "
 script = ExtResource( 4 )
+=======
+[node name="Sprite" type="Sprite" parent="Enemy"]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+visible = false
+shape = SubResource( 1 )
+>>>>>>> 1469d47d519d11cde767f144a62d824f16cf14c5
