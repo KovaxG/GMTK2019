@@ -5,7 +5,9 @@ var hp = 1.0
 var left_holding = false
 
 var textures = {'naked':load("res://GFX/g_prot.png"),
-				'armored':load("res://GFX/a_prot.png")}
+				'armored':load("res://GFX/a_prot.png"),
+				'keret': load("res://GFX/keret.png"),
+				'placeholer' : load('res://GFX/placeholder.png')}
 
 var inventory = null
 var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear']
@@ -25,7 +27,6 @@ func PickUpItem(overlaps):
 			'ItemArmor':
 				hp *= 2.0
 				$Sprite.texture = textures['armored']
-		
 			
 	inventory = item
 	#item.visible = false
@@ -35,9 +36,10 @@ func PickUpItem(overlaps):
 	#get_parent().find_node('IconItem').update()
 	
 func DropItem():
-	if inventory != null:
-		inventory.position.x = position.x + 33
-		inventory.position.y = position.y
+	if inventory != null and not $HandsReach.get_overlapping_areas() and not $HandsReach.get_overlapping_bodies():
+		inventory.position.x = position.x - 33 * sin(rotation) 
+		inventory.position.y = position.y + 33 * cos(rotation)
+		inventory.rotation = rotation+PI
 		recently_picked_up = true
 		
 		if inventory.name == 'ItemArmor':
@@ -51,8 +53,11 @@ func UseItem():
 		match inventory.name:
 			'ItemPotion':
 				hp=1
-				inventory.position = Vector2(-1000,-1000)
+				inventory.position.x = -1000
+				inventory.position.y = -1000
+				get_parent().find_node('IconItem').texture = null
 				inventory=null
+				
 
 func _physics_process(delta):
 
@@ -81,6 +86,8 @@ func handle_motion():
 		motion.x = -100
 	if Input.is_action_pressed("ui_right"):
 		motion.x = 100
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
 	
 	var overlaps = $Area2D.get_overlapping_areas()
 	for area in overlaps:

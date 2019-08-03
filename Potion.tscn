@@ -3,7 +3,7 @@
 [ext_resource path="res://GFX/poti.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 9.39764, 11.3675 )
 
 [node name="ItemPotion" type="Area2D"]
 __meta__ = {

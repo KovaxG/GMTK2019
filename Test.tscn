@@ -9,7 +9,7 @@
 [ext_resource path="res://Enemy.gd" type="Script" id=7]
 [ext_resource path="res://GFX/orc.png" type="Texture" id=8]
 [ext_resource path="res://GFX/nmeweapon2.png" type="Texture" id=9]
-[ext_resource path="res://GFX/placeholder.png" type="Texture" id=10]
+[ext_resource path="res://GFX/keret.png" type="Texture" id=10]
 [ext_resource path="res://LabelHP.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -37,9 +37,11 @@ position = Vector2( 232.057, 52.6833 )
 
 [node name="ItemSpear" parent="." instance=ExtResource( 4 )]
 position = Vector2( 231.535, 92.7184 )
+rotation = 0.785398
 
 [node name="ItemClub" parent="." instance=ExtResource( 5 )]
 position = Vector2( 149.269, 53.5195 )
+rotation = 0.785398
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
@@ -98,9 +100,17 @@ margin_right = 35.0
 margin_bottom = 23.0
 text = "Item:"
 
-[node name="IconItem" type="TextureRect" parent="ControlMainAnchor/ContainerItem/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ControlMainAnchor/ContainerItem/HBoxContainer"]
 margin_left = 39.0
 margin_right = 71.0
+margin_bottom = 32.0
+
+[node name="IconItem" type="TextureRect" parent="ControlMainAnchor/ContainerItem/HBoxContainer/MarginContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="IconCaret" type="TextureRect" parent="ControlMainAnchor/ContainerItem/HBoxContainer/MarginContainer"]
+margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 10 )
 
