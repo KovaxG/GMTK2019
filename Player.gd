@@ -3,6 +3,8 @@ extends KinematicBody2D
 var motion = Vector2()
 
 var V_PLAYER = 100
+var control_type_relative = true
+var K_debounced = true
 var HP = 1.0 setget set_hp
 func set_hp(val):
 	HP = val
@@ -97,17 +99,39 @@ func rotate_to_mouse():
 	rotate(3*PI/2) 
 	
 func handle_keyboard():
-	if Input.is_key_pressed(KEY_S):
-		motion.y = V_PLAYER
-	if Input.is_key_pressed(KEY_W):
-		motion.y = -V_PLAYER
-	if Input.is_key_pressed(KEY_A):
-		motion.x = -V_PLAYER
-	if Input.is_key_pressed(KEY_D):
-		motion.x = V_PLAYER
-	if abs(motion.x) + abs(motion.y) == 2*V_PLAYER:
-		motion.x /= sqrt(2)
-		motion.y /= sqrt(2)
+	if control_type_relative:
+		if Input.is_key_pressed(KEY_S):
+			motion.y = V_PLAYER * cos(rotation+PI)
+			motion.x = -V_PLAYER * sin(rotation+PI)
+		if Input.is_key_pressed(KEY_W):
+			motion.y = V_PLAYER * cos(rotation)
+			motion.x = -V_PLAYER * sin(rotation)
+		if Input.is_key_pressed(KEY_A):
+			motion.y = V_PLAYER * cos(rotation-PI/2)
+			motion.x = -V_PLAYER * sin(rotation-PI/2)
+		if Input.is_key_pressed(KEY_D):
+			motion.y = V_PLAYER * cos(rotation+PI/2)
+			motion.x = -V_PLAYER * sin(rotation+PI/2)
+	else:
+		if Input.is_key_pressed(KEY_S):
+			motion.y = V_PLAYER
+		if Input.is_key_pressed(KEY_W):
+			motion.y = -V_PLAYER
+		if Input.is_key_pressed(KEY_A):
+			motion.x = -V_PLAYER
+		if Input.is_key_pressed(KEY_D):
+			motion.x = V_PLAYER
+		if abs(motion.x) + abs(motion.y) == 2*V_PLAYER:
+			motion.x /= sqrt(2)
+			motion.y /= sqrt(2)
+			
+	if Input.is_key_pressed(KEY_K):
+		if K_debounced:
+			control_type_relative = not control_type_relative
+			K_debounced = false
+	else:
+		K_debounced = true
+		
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
 	
