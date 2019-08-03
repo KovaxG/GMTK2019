@@ -3,12 +3,12 @@
 [ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy.gd" type="Script" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://GFX/orc.png" type="Texture" id=4]
 [ext_resource path="res://GFX/placeholder.png" type="Texture" id=5]
 [ext_resource path="res://LabelHP.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 16, 12.2119 )
 
 [node name="World" type="Node2D"]
 
@@ -24,21 +24,24 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 80, 64 )
+position = Vector2( 96, 64 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
-modulate = Color( 1, 0, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
+rotation = 3.14159
+scale = Vector2( 1.37389, 1.50711 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 visible = false
 shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Enemy"]
+enabled = true
+cast_to = Vector2( 0, 300 )
 
 [node name="ControlMainAnchor" type="Control" parent="."]
 editor/display_folded = true
