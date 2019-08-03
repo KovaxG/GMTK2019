@@ -59,6 +59,8 @@ func _physics_process(delta):
 	rotate_to_mouse()
 	handle_motion()
 	
+	
+	
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
 	
 func rotate_to_mouse():
@@ -71,7 +73,6 @@ func rotate_to_mouse():
 func handle_motion():
 	motion.y = 0
 	motion.x = 0
-	hp-=0.001
 	if Input.is_action_pressed("ui_down"):
 		motion.y = 100
 	if Input.is_action_pressed("ui_up"):
@@ -84,7 +85,9 @@ func handle_motion():
 	var overlaps = $Area2D.get_overlapping_areas()
 	for area in overlaps:
 		if 'Item' in area.name:
-				PickUpItem(overlaps)
+				PickUpItem(overlaps)	
+		elif area.name == "Weapon":
+			hp -= 0.015
 	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		UseItem()

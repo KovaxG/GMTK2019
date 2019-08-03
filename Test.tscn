@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Armor.tscn" type="PackedScene" id=2]
@@ -8,11 +8,15 @@
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy.gd" type="Script" id=7]
 [ext_resource path="res://GFX/orc.png" type="Texture" id=8]
-[ext_resource path="res://GFX/placeholder.png" type="Texture" id=9]
-[ext_resource path="res://LabelHP.gd" type="Script" id=10]
+[ext_resource path="res://GFX/nmeweapon2.png" type="Texture" id=9]
+[ext_resource path="res://GFX/placeholder.png" type="Texture" id=10]
+[ext_resource path="res://LabelHP.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 12.2119 )
+extents = Vector2( 16, 9.75153 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2.75354, 10.5059 )
 
 [node name="World" type="Node2D"]
 
@@ -40,11 +44,8 @@ position = Vector2( 149.269, 53.5195 )
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 96, 64 )
+position = Vector2( 96.0499, 74.4648 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 rotation = 3.14159
@@ -52,14 +53,29 @@ scale = Vector2( 1.37389, 1.50711 )
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-visible = false
+position = Vector2( 0.349655, -0.524475 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Enemy"]
+position = Vector2( -0.524475, 10.4895 )
 enabled = true
 cast_to = Vector2( 0, 300 )
 
+[node name="Weapon" type="Area2D" parent="Enemy"]
+position = Vector2( 8.21677, 12.0629 )
+
+[node name="weaponshape" type="CollisionShape2D" parent="Enemy/Weapon"]
+position = Vector2( -7.16783, 13.1119 )
+rotation = 0.50273
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Enemy/Weapon"]
+position = Vector2( -5.09152, 10.1686 )
+rotation = -2.6329
+texture = ExtResource( 9 )
+
 [node name="ControlMainAnchor" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -86,7 +102,7 @@ text = "Item:"
 margin_left = 39.0
 margin_right = 71.0
 margin_bottom = 32.0
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="ContainerHP2" type="MarginContainer" parent="ControlMainAnchor"]
 margin_left = 185.321
@@ -102,4 +118,4 @@ margin_top = 9.0
 margin_right = 49.0
 margin_bottom = 23.0
 text = "HP: "
-script = ExtResource( 10 )
+script = ExtResource( 11 )
