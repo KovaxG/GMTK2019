@@ -32,6 +32,8 @@ func _physics_process(delta):
 		if object.name == 'Club':
 			hp -= 0.1
 			alerted = true
+		elif object.name == 'Spear':
+			hp = -100
 		
 	motion = move_and_slide(motion)
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GFX/g_prot.png" type="Texture" id=2]
 [ext_resource path="res://GFX/club.png" type="Texture" id=3]
+[ext_resource path="res://GFX/spear.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.5084, 8.15195 )
@@ -12,6 +13,9 @@ extents = Vector2( 16, 16 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 4.18622
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 21.7357, 1.77216 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 160, 128 )
@@ -57,3 +61,16 @@ shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+[node name="Spear" type="Sprite" parent="."]
+position = Vector2( 8.64938, 4.5726 )
+rotation = 2.34762
+scale = Vector2( 0.72486, 0.71505 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Spear"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear/Area2D"]
+position = Vector2( 0.659149, -0.648315 )
+rotation = -0.771684
+shape = SubResource( 4 )
+disabled = true

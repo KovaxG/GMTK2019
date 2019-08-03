@@ -24,9 +24,12 @@ var inventory = null
 var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear']
 var recently_picked_up = false
 
+var throw_spear = false
+
 func _ready():
 	$Club.visible = false
 	$Club/ClubArea.disabled = true
+	$Spear.visible = false
 
 func PickUpItem(overlaps):
 	get_viewport_rect().position = Vector2(200,200)
@@ -46,6 +49,8 @@ func PickUpItem(overlaps):
 				$Sprite.texture = textures['armored']
 			'ItemClub':
 				$Club.visible = true
+			'ItemSpear':
+				$Spear.visible = true
 			
 	inventory = item
 	#item.visible = false
@@ -66,6 +71,9 @@ func DropItem():
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
+		elif inventory.name == 'ItemSpear':
+			$Spear.visible = false
+			
 		get_parent().find_node('IconItem').texture = null
 		inventory = null
 
@@ -74,18 +82,28 @@ func UseItem():
 		match inventory.name:
 			'ItemPotion':
 				set_hp(1)
-				inventory.position.x = -1000
-				inventory.position.y = -1000
-				get_parent().find_node('IconItem').texture = null
-				inventory=null
+				destroy_item()
 			'ItemClub':
 				$Club/ClubArea.disabled = false
 				$Club.rotate(0.3)
-				
+			'ItemSpear':
+				destroy_item()
+				$Spear.visible = false
+				var spear = preload("res://FlyingScene.tscn").instance()
+				spear.start(global_position, rotation + PI/2)
+				get_parent().add_child(spear)
+
+func destroy_item():
+	inventory.position.x = -1000
+	inventory.position.y = -1000
+	get_parent().find_node('IconItem').texture = null
+	inventory = null
 
 func _physics_process(delta):
-
 	$Club/ClubArea.disabled = true
+	
+	
+	
 	rotate_to_mouse()
 	handle_motion()
 		
