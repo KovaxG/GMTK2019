@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemy.gd" type="Script" id=3]
-[ext_resource path="res://GFX/orc.png" type="Texture" id=4]
-[ext_resource path="res://GFX/placeholder.png" type="Texture" id=5]
-[ext_resource path="res://LabelHP.gd" type="Script" id=6]
+[ext_resource path="res://Armor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Potion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Spear.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Club.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy.gd" type="Script" id=7]
+[ext_resource path="res://GFX/orc.png" type="Texture" id=8]
+[ext_resource path="res://GFX/placeholder.png" type="Texture" id=9]
+[ext_resource path="res://LabelHP.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 12.2119 )
@@ -21,11 +25,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="ItemArmor" parent="." instance=ExtResource( 2 )]
+position = Vector2( 188.991, 52.6833 )
+
+[node name="ItemPotion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 232.057, 52.6833 )
+
+[node name="ItemSpear" parent="." instance=ExtResource( 4 )]
+position = Vector2( 231.535, 92.7184 )
+
+[node name="ItemClub" parent="." instance=ExtResource( 5 )]
+position = Vector2( 149.269, 53.5195 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 96, 64 )
-script = ExtResource( 3 )
+position = Vector2( 80, 64 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -33,7 +49,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Enemy"]
 rotation = 3.14159
 scale = Vector2( 1.37389, 1.50711 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 visible = false
@@ -44,7 +60,6 @@ enabled = true
 cast_to = Vector2( 0, 300 )
 
 [node name="ControlMainAnchor" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -67,25 +82,24 @@ margin_right = 35.0
 margin_bottom = 23.0
 text = "Item:"
 
-[node name="TextureRect" type="TextureRect" parent="ControlMainAnchor/ContainerItem/HBoxContainer"]
+[node name="IconItem" type="TextureRect" parent="ControlMainAnchor/ContainerItem/HBoxContainer"]
 margin_left = 39.0
 margin_right = 71.0
 margin_bottom = 32.0
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 
 [node name="ContainerHP2" type="MarginContainer" parent="ControlMainAnchor"]
-editor/display_folded = true
-margin_left = 202.0
-margin_top = 167.0
-margin_right = 251.0
-margin_bottom = 190.0
+margin_left = 185.321
+margin_top = 158.661
+margin_right = 234.321
+margin_bottom = 190.661
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="LabelHP" type="Label" parent="ControlMainAnchor/ContainerHP2"]
-margin_top = 4.0
+margin_top = 9.0
 margin_right = 49.0
-margin_bottom = 18.0
+margin_bottom = 23.0
 text = "HP: "
-script = ExtResource( 6 )
+script = ExtResource( 10 )
