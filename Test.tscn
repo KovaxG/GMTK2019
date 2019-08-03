@@ -2,10 +2,10 @@
 
 [ext_resource path="res://levelTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=2]
-[ext_resource path="res://GFX/placeholder.png" type="Texture" id=3]
-[ext_resource path="res://LabelHP.gd" type="Script" id=4]
-[ext_resource path="res://Enemy.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Enemy.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://GFX/placeholder.png" type="Texture" id=5]
+[ext_resource path="res://LabelHP.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -22,6 +22,23 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Enemy" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 80, 64 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Enemy"]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+visible = false
+shape = SubResource( 1 )
 
 [node name="ControlMainAnchor" type="Control" parent="."]
 editor/display_folded = true
@@ -51,7 +68,7 @@ text = "Item:"
 margin_left = 39.0
 margin_right = 71.0
 margin_bottom = 32.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="ContainerHP2" type="MarginContainer" parent="ControlMainAnchor"]
 editor/display_folded = true
@@ -68,21 +85,4 @@ margin_top = 4.0
 margin_right = 49.0
 margin_bottom = 18.0
 text = "HP: "
-script = ExtResource( 4 )
-
-[node name="Enemy" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 80, 64 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Enemy"]
-modulate = Color( 1, 0, 0, 1 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-visible = false
-shape = SubResource( 1 )
+script = ExtResource( 6 )
