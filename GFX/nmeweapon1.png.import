@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poti.png-b0139f104e65d44b8edfe0fa01b92b34.stex"
+path="res://.import/nmeweapon1.png-42c87620b54bfa7af4c7217d469e8269.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/poti.png"
-dest_files=[ "res://.import/poti.png-b0139f104e65d44b8edfe0fa01b92b34.stex" ]
+source_file="res://GFX/nmeweapon1.png"
+dest_files=[ "res://.import/nmeweapon1.png-42c87620b54bfa7af4c7217d469e8269.stex" ]
 
 [params]
 

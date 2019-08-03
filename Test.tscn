@@ -40,7 +40,7 @@ position = Vector2( 149.269, 53.5195 )
 [node name="Player" parent="." instance=ExtResource( 6 )]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 80, 64 )
+position = Vector2( 96, 64 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
