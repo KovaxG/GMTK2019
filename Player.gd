@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var motion = Vector2()
+var hp = 1.0
 
 func _physics_process(delta):
 	motion.y = 0
@@ -10,6 +11,7 @@ func _physics_process(delta):
 		motion.y = 100
 	if Input.is_action_pressed("ui_up"):
 		motion.y = -100
+		hp -= 0.05
 	if Input.is_action_pressed("ui_left"):
 		motion.x = -100
 	if Input.is_action_pressed("ui_right"):
@@ -17,4 +19,6 @@ func _physics_process(delta):
 	
 		
 	motion = move_and_slide(motion)
-	pass
+	
+	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
+	#print(labelHP)
