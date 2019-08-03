@@ -61,6 +61,7 @@ shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
 [node name="Spear" type="Sprite" parent="."]
 position = Vector2( 8.64938, 4.5726 )
 rotation = 2.34762
