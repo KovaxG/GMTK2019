@@ -14,12 +14,17 @@ var inventory = null
 var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear']
 var recently_picked_up = false
 
+func _ready():
+	$Club.visible = false
+	$Club/ClubArea.disabled = true
+
 func PickUpItem(overlaps):
 	var item = null
 	for area in overlaps:			
 		if area.name in item_names and inventory == null:
 			item = area
 			break
+			
 	if item == null:
 			recently_picked_up = false
 			return
@@ -28,6 +33,8 @@ func PickUpItem(overlaps):
 			'ItemArmor':
 				hp *= 2.0
 				$Sprite.texture = textures['armored']
+			'ItemClub':
+				$Club.visible = true
 			
 	inventory = item
 	#item.visible = false
@@ -46,6 +53,8 @@ func DropItem():
 		if inventory.name == 'ItemArmor':
 			hp/=2.0
 			$Sprite.texture = textures['naked']
+		elif inventory.name == 'ItemClub':
+			$Club.visible = false
 		get_parent().find_node('IconItem').texture = null
 		inventory = null
 
@@ -58,15 +67,17 @@ func UseItem():
 				inventory.position.y = -1000
 				get_parent().find_node('IconItem').texture = null
 				inventory=null
+			'ItemClub':
+				$Club/ClubArea.disabled = false
+				$Club.rotate(0.3)
 				
 
 func _physics_process(delta):
 
+	$Club/ClubArea.disabled = true
 	rotate_to_mouse()
 	handle_motion()
-	
-	
-	
+		
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(hp)
 	
 func rotate_to_mouse():
@@ -96,6 +107,7 @@ func handle_motion():
 				PickUpItem(overlaps)	
 		elif area.name == 'Weapon':
 			hp -= 0.015
+			
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		UseItem()
 		if not left_holding:

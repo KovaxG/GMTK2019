@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GFX/g_prot.png" type="Texture" id=2]
+[ext_resource path="res://GFX/club.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.5084, 8.15195 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 4.18622
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 160, 128 )
@@ -34,3 +38,19 @@ position = Vector2( 0, 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandsReach"]
 shape = SubResource( 2 )
+
+[node name="Club" type="Area2D" parent="."]
+position = Vector2( 7.27205, 6.61096 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="Club"]
+position = Vector2( -3.8681, 8.22034 )
+rotation = 3.14047
+scale = Vector2( 0.689461, 0.61687 )
+texture = ExtResource( 3 )
+
+[node name="ClubArea" type="CollisionShape2D" parent="Club"]
+position = Vector2( -10.4674, 13.7728 )
+shape = SubResource( 3 )
