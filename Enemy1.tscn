@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://GFX/orc.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Audio/Detected.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/Tracking.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Audio/Death_high.wav" type="AudioStream" id=6]
+[ext_resource path="res://GFX/dead.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 9.75153 )
@@ -118,3 +119,8 @@ stream = ExtResource( 5 )
 
 [node name="AudioDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="DeadSprite" type="Sprite" parent="."]
+position = Vector2( 0.184021, 5.15272 )
+scale = Vector2( 1.14952, 1.20703 )
+texture = ExtResource( 7 )

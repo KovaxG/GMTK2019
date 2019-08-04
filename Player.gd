@@ -12,7 +12,7 @@ func Lose(asd):
 	while $AudioDeath.is_playing():
 		HP=0
 		motion = Vector2(0,0)
-	get_tree().change_scene(current_level)
+	get_tree().reload_current_scene()
 
 var deaththread = null
 
@@ -28,7 +28,6 @@ var armor_coeff = 3
 
 
 var left_holding = false
-export(String, FILE, '*.tscn') var current_level
 
 var textures = {'naked':load("res://GFX/g_prot.png"),
 				'armored':load("res://GFX/a_prot.png"),

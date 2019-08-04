@@ -8,16 +8,20 @@ export (float) var max_vision_angle = 45.0
 var hp = 1
 var alerted = false
 
+func _ready():
+	$DeadSprite.visible = false
+
 func _physics_process(delta):
 	
-	if hp < 0:
-		if visible:
+	if hp < 0 && visible:
+		if not $DeadSprite.visible:
 			$AudioTracking.stop()
 			$AudioDeath.play()
-		hide()
 		$Weapon/weaponshape.disabled = true
 		$Area2D/CollisionShape2D.disabled = true
 		$CollisionShape2D2.disabled = true
+		$Sprite.visible = false
+		$DeadSprite.visible = true
 		return
 	
 	motion.x = 0

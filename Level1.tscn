@@ -6,8 +6,8 @@
 [ext_resource path="res://Potion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Spear.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Club.tscn" type="PackedScene" id=6]
-[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Ladder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://BGM.tscn" type="PackedScene" id=10]
 
@@ -34,12 +34,11 @@ rotation = 0.785398
 position = Vector2( 57.8941, 55.5729 )
 rotation = 0.785398
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 104.347, 125.34 )
-current_level = "res://Level1.tscn"
-
-[node name="Enemy" parent="." instance=ExtResource( 8 )]
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 304.871, 51.4158 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 104.347, 125.34 )
 
 [node name="Ladder" parent="." instance=ExtResource( 9 )]
 position = Vector2( 529.599, 80 )
