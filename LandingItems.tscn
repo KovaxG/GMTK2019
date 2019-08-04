@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://TextSlide.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextSlide" parent="." instance=ExtResource( 1 )]
+contents_from_file = "res://Misc/LandingItems.txt"
+next_scene = "res://LandingControls.tscn"

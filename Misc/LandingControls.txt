@@ -1,0 +1,9 @@
+Controls. You don't need to be a rocket surgeon really.
+
+Left click: use item
+
+Right click: drop item
+
+'k'. Kontrol scheme. Relative or absolute
+
+GF&HF
