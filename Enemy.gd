@@ -11,6 +11,9 @@ var alerted = false
 func _physics_process(delta):
 	
 	if hp < 0:
+		if visible:
+			$AudioTracking.stop()
+			$AudioDeath.play()
 		hide()
 		$Weapon/weaponshape.disabled = true
 		$Area2D/CollisionShape2D.disabled = true
@@ -55,7 +58,7 @@ func swing_weapon():
 		swing_left = true
 		
 	if not swing_left:
-		$Weapon.rotate(0.1)	
+		$Weapon.rotate(0.1)
 	else:
 		$Weapon.rotate(-0.1)
 	
@@ -67,3 +70,5 @@ func look_for_target():
 				var object = child.get_collider()
 				if object.name == "Player":
 					target = object
+					$AudioDetected.play()
+					$AudioTracking.play()

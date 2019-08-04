@@ -5,11 +5,25 @@ var motion = Vector2()
 var V_PLAYER = 100
 var control_type_relative = false
 var K_debounced = true
+
+
+	
+func Lose(asd):
+	$AudioDeath.play()
+	while $AudioDeath.is_playing():
+		HP=0
+		motion = Vector2(0,0)
+	get_tree().change_scene(current_level)
+
+var deaththread = null
+
+
 var HP = 1.0 setget set_hp
 func set_hp(val):
 	HP = val
-	if HP<0:
-		Lose()
+	if HP<=0 and deaththread == null:
+			deaththread=Thread.new()
+			deaththread.start(self,"Lose")
 
 var armor_coeff = 3
 
@@ -90,12 +104,16 @@ func UseItem():
 			'ItemClub':
 				$Club/ClubArea.disabled = false
 				$Club.rotate(0.3)
+				if not $AudioClubWhoosh.playing:
+					$AudioClubWhoosh.play()
 			'ItemSpear':
 				destroy_item()
 				$Spear.visible = false
 				var spear = preload("res://FlyingScene.tscn").instance()
 				spear.start(global_position, rotation + PI/2)
 				get_parent().add_child(spear)
+		if inventory!=null and inventory.name != 'ItemClub' and $AudioClubWhoosh.playing:
+			$AudioClubWhoosh.stop()
 
 func destroy_item():
 	inventory.position.x = -1000
@@ -168,13 +186,19 @@ func handle_motion():
 				PickUpItem(overlaps)	
 		elif area.name == 'Weapon':
 			set_hp(HP- 0.015)
-			
+			if inventory!=null and inventory.name == 'ItemArmor':
+				if not $AudioClang.is_playing():
+					$AudioClang.play()
+			elif not $AudioStab.is_playing():
+				$AudioStab.play()
+				
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		UseItem()
 		if not left_holding:
 			left_holding = true
 	else:
 		left_holding = false
+		$AudioClubWhoosh.stop()
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		DropItem()
 		
@@ -183,8 +207,3 @@ func handle_motion():
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
 	
 	
-	
-func Lose():
-	get_tree().change_scene(current_level)
-
-
