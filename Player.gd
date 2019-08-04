@@ -28,7 +28,7 @@ var textures = {'naked':load("res://GFX/g_prot.png"),
 				'placeholer' : load('res://GFX/placeholder.png')}
 
 var inventory = null
-var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear']
+var item_names = ['ItemClub','ItemPotion','ItemArmor','ItemSpear','ItemSpear2']
 var recently_picked_up = false
 
 var throw_spear = false
@@ -57,11 +57,11 @@ func PickUpItem(overlaps):
 		match item.name:
 			'ItemArmor':
 				set_hp(HP * armor_coeff)
-				V_PLAYER = 75
+				V_PLAYER = 68
 				$Sprite.texture = textures['armored']
 			'ItemClub':
 				$Club.visible = true
-			'ItemSpear':
+			'ItemSpear','ItemSpear2':
 				$Spear.visible = true
 			
 	inventory = item
@@ -84,7 +84,7 @@ func DropItem():
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
-		elif inventory.name == 'ItemSpear':
+		elif 'ItemSpear' in inventory.name:
 			$Spear.visible = false
 			
 		get_parent().find_node('IconItem').texture = null
@@ -101,7 +101,7 @@ func UseItem():
 				$Club.rotate(0.3)
 				if not $AudioClubWhoosh.playing:
 					$AudioClubWhoosh.play()
-			'ItemSpear':
+			'ItemSpear','ItemSpear2':
 				destroy_item()
 				$Spear.visible = false
 				var spear = preload("res://FlyingScene.tscn").instance()
@@ -121,11 +121,11 @@ func _physics_process(delta):
 		motion = Vector2(0,0)
 		if not $AudioDeath.is_playing():
 			get_tree().reload_current_scene()
-	
+	else:
+		rotate_to_mouse()
+		handle_motion()
 	$Club/ClubArea.disabled = true
 	
-	rotate_to_mouse()
-	handle_motion()
 		
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
 	
