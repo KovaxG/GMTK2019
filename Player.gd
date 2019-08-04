@@ -11,6 +11,8 @@ func set_hp(val):
 	if HP<0:
 		Lose()
 
+var armor_coeff = 3
+
 
 var left_holding = false
 export(String, FILE, '*.tscn') var current_level
@@ -45,7 +47,7 @@ func PickUpItem(overlaps):
 	else:
 		match item.name:
 			'ItemArmor':
-				set_hp(HP * 2.0)
+				set_hp(HP * armor_coeff)
 				V_PLAYER = 75
 				$Sprite.texture = textures['armored']
 			'ItemClub':
@@ -68,7 +70,7 @@ func DropItem():
 		recently_picked_up = true
 		
 		if inventory.name == 'ItemArmor':
-			set_hp(HP/2.0)
+			set_hp(HP/armor_coeff)
 			V_PLAYER = 100
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':

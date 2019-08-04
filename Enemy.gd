@@ -30,7 +30,7 @@ func _physics_process(delta):
 	var objects = $Area2D.get_overlapping_areas()
 	for object in objects:
 		if object.name == 'Club':
-			hp -= 0.1
+			hp -= 0.15
 			alerted = true
 		elif object.name == 'Spear':
 			hp = -100
