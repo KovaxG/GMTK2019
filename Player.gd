@@ -4,25 +4,18 @@ var motion = Vector2()
 var V_PLAYER = 100
 var control_type_relative = false
 var K_debounced = true
-
-
-	
-func Lose(asd):
-	$AudioDeath.play()
-	while $AudioDeath.is_playing():
-		HP=0
-		motion = Vector2(0,0)
-	get_tree().reload_current_scene()
-
-var deaththread = null
+var died = false
 
 
 var HP = 1.0 setget set_hp
 func set_hp(val):
-	HP = val
-	if HP<=0 and deaththread == null:
-			deaththread=Thread.new()
-			deaththread.start(self,"Lose")
+	if died:
+		HP = 0
+	else:
+		HP = val
+		if HP<=0:
+			$AudioDeath.play()
+			died = true
 
 var armor_coeff = 3
 
@@ -124,6 +117,11 @@ func destroy_item():
 	inventory = null
 
 func _physics_process(delta):
+	if died:
+		motion = Vector2(0,0)
+		if not $AudioDeath.is_playing():
+			get_tree().reload_current_scene()
+	
 	$Club/ClubArea.disabled = true
 	
 	rotate_to_mouse()
