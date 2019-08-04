@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://TextSlide.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GFX/Title Screen.png" type="Texture" id=2]
 
 [node name="LandingPage" type="Node2D"]
 
 [node name="TextSlide" parent="." instance=ExtResource( 1 )]
-contents_from_file = "res://Misc/Landing1.txt"
 next_scene = "res://LandingItems.tscn"
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.1148, 0.115226 )
+texture = ExtResource( 2 )
+centered = false
