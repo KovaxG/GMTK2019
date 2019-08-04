@@ -60,37 +60,32 @@ rotation = 2.79253
 max_vision_angle = 30.0
 
 [node name="Enemy9" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1448.94, 332.415 )
+position = Vector2( 1374.02, 334.555 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
 [node name="Enemy10" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1693.41, 329.157 )
+position = Vector2( 1666.77, 335.816 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
 [node name="Enemy11" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1525.51, 321.012 )
+position = Vector2( 1427.76, 332.665 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
 [node name="Enemy12" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1598.81, 338.931 )
-rotation = -1.39626
-max_vision_angle = 30.0
-
-[node name="Enemy14" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1736.58, 317.754 )
+position = Vector2( 1539.12, 333.937 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
 [node name="Enemy15" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1563.79, 314.496 )
+position = Vector2( 1484.12, 334.711 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
 [node name="Enemy13" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1637.1, 344.632 )
+position = Vector2( 1603.33, 334.643 )
 rotation = -1.39626
 max_vision_angle = 30.0
 
