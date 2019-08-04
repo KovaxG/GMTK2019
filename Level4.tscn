@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TileScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Potion.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://Spear.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Armor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://BGM.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Ladder.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Club.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Audio/BGM4.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Club.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 
@@ -105,12 +106,13 @@ position = Vector2( 1264.43, 74.4627 )
 position = Vector2( 1263.77, 123.462 )
 
 [node name="BGM" parent="." instance=ExtResource( 7 )]
-stream_name = "res://Audio/BGM.ogg"
+stream = ExtResource( 8 )
+stream_name = "res://Audio/BGM4.ogg"
 
-[node name="Ladder" parent="." instance=ExtResource( 8 )]
+[node name="Ladder" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1327.04, 337.113 )
 next_map = "res://LevelVictory.tscn"
 
-[node name="ItemClub" parent="." instance=ExtResource( 9 )]
+[node name="ItemClub" parent="." instance=ExtResource( 10 )]
 position = Vector2( 346.968, -48.3481 )
 rotation = -2.00713
