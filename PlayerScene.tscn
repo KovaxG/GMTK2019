@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GFX/g_prot.png" type="Texture" id=2]
 [ext_resource path="res://GFX/club.png" type="Texture" id=3]
 [ext_resource path="res://GFX/spear.png" type="Texture" id=4]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.5084, 8.15195 )
@@ -75,3 +76,7 @@ position = Vector2( 0.659149, -0.648315 )
 rotation = -0.771684
 shape = SubResource( 4 )
 disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlMainAnchor" parent="CanvasLayer" instance=ExtResource( 5 )]
