@@ -1,39 +1,45 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileScene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Armor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Potion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Spear.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Club.tscn" type="PackedScene" id=5]
-[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Ladder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GFX/budi.png" type="Texture" id=2]
+[ext_resource path="res://Armor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Potion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spear.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Club.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Ladder.tscn" type="PackedScene" id=9]
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65536, 0, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 0, 0, 131072, 0, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 0, 0, 196608, 0, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 2, 0, 196615, 4, 0, 196616, 0, 0, 262144, 0, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 2, 0, 262151, 6, 0, 262152, 0, 0, 327680, 0, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 2, 0, 327687, 0, 0, 327688, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0 )
+tile_data = PoolIntArray( 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 17, 0, 7, 14, 0, 8, 14, 0, 9, 14, 0, 10, 14, 0, 11, 14, 0, 12, 16, 0, 13, 10, 0, 14, 14, 0, 15, 14, 0, 16, 14, 0, 17, 14, 0, 18, 16, 0, 65536, 19, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 13, 0, 65543, 5, 0, 65544, 5, 0, 65545, 5, 0, 65546, 5, 0, 65547, 5, 0, 65548, 13, 0, 65549, 7, 0, 65550, 7, 0, 65551, 7, 0, 65552, 7, 0, 65553, 7, 0, 65554, 13, 0, 131072, 19, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 13, 0, 131079, 5, 0, 131080, 9, 0, 131081, 3, 0, 131082, 9, 0, 131083, 5, 0, 131084, 13, 0, 131085, 7, 0, 131086, 7, 0, 131087, 7, 0, 131088, 6, 0, 131089, 7, 0, 131090, 13, 0, 196608, 19, 0, 196609, 8, 0, 196610, 8, 0, 196611, 8, 0, 196612, 8, 0, 196613, 8, 0, 196614, 15, 0, 196615, 12, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 10, 0, 196620, 18, 0, 196621, 20, 0, 196622, 7, 0, 196623, 7, 0, 196624, 7, 0, 196625, 7, 0, 196626, 13, 0, 262144, 19, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 8, 0, 262149, 8, 0, 262150, 7, 0, 262151, 7, 0, 262152, 7, 0, 262153, 7, 0, 262154, 7, 0, 262155, 7, 0, 262156, 7, 0, 262157, 7, 0, 262158, 7, 0, 262159, 7, 0, 262160, 7, 0, 262161, 7, 0, 262162, 13, 0, 327680, 19, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 7, 0, 327687, 7, 0, 327688, 7, 0, 327689, 7, 0, 327690, 7, 0, 327691, 7, 0, 327692, 7, 0, 327693, 7, 0, 327694, 7, 0, 327695, 7, 0, 327696, 7, 0, 327697, 7, 0, 327698, 13, 0, 393216, 19, 0, 393217, 19, 0, 393218, 19, 0, 393219, 19, 0, 393220, 19, 0, 393221, 19, 0, 393222, 10, 0, 393223, 14, 0, 393224, 14, 0, 393225, 14, 0, 393226, 14, 0, 393227, 14, 0, 393228, 14, 0, 393229, 14, 0, 393230, 14, 0, 393231, 14, 0, 393232, 14, 0, 393233, 14, 0, 393234, 18, 0 )
 
-[node name="ItemArmor" parent="." instance=ExtResource( 2 )]
-position = Vector2( 188.991, 52.6833 )
+[node name="Budi" type="Sprite" parent="."]
+position = Vector2( 304.039, 47.5628 )
+texture = ExtResource( 2 )
 
-[node name="ItemPotion" parent="." instance=ExtResource( 3 )]
-position = Vector2( 232.057, 52.6833 )
+[node name="ItemArmor" parent="." instance=ExtResource( 3 )]
+position = Vector2( 99.6695, 55.25 )
 
-[node name="ItemSpear" parent="." instance=ExtResource( 4 )]
-position = Vector2( 231.535, 92.7184 )
+[node name="ItemPotion" parent="." instance=ExtResource( 4 )]
+position = Vector2( 130.415, 53.71 )
+
+[node name="ItemSpear" parent="." instance=ExtResource( 5 )]
+position = Vector2( 166.854, 54.7311 )
 rotation = 0.785398
 
-[node name="ItemClub" parent="." instance=ExtResource( 5 )]
-position = Vector2( 149.269, 53.5195 )
+[node name="ItemClub" parent="." instance=ExtResource( 6 )]
+position = Vector2( 57.8941, 55.5729 )
 rotation = 0.785398
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 170, 128 )
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 104.347, 125.34 )
 current_level = "res://Level1.tscn"
 
-[node name="Enemy" parent="." instance=ExtResource( 7 )]
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 304.871, 51.4158 )
 
-[node name="Ladder" parent="." instance=ExtResource( 8 )]
-position = Vector2( 240.315, 143.792 )
+[node name="Ladder" parent="." instance=ExtResource( 9 )]
+position = Vector2( 529.599, 80 )
 next_map = "res://Level2.tscn"

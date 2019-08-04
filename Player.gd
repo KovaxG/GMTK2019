@@ -3,7 +3,7 @@ extends KinematicBody2D
 var motion = Vector2()
 
 var V_PLAYER = 100
-var control_type_relative = true
+var control_type_relative = false
 var K_debounced = true
 var HP = 1.0 setget set_hp
 func set_hp(val):
@@ -46,7 +46,7 @@ func PickUpItem(overlaps):
 		match item.name:
 			'ItemArmor':
 				set_hp(HP * 2.0)
-				V_PLAYER /= 2
+				V_PLAYER = 75
 				$Sprite.texture = textures['armored']
 			'ItemClub':
 				$Club.visible = true
@@ -69,7 +69,7 @@ func DropItem():
 		
 		if inventory.name == 'ItemArmor':
 			set_hp(HP/2.0)
-			V_PLAYER *= 2
+			V_PLAYER = 100
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
