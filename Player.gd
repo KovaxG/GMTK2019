@@ -59,6 +59,7 @@ func PickUpItem(overlaps):
 			'ItemArmor':
 				set_hp(HP * armor_coeff)
 				V_PLAYER = 68
+				$AudioArmor.play()
 				armored = true
 			'ItemClub':
 				$Club.visible = true
@@ -81,6 +82,7 @@ func DropItem():
 		
 		if inventory.name == 'ItemArmor':
 			set_hp(HP/armor_coeff)
+			$AudioArmor.play()
 			V_PLAYER = 100
 			armored = false
 		elif inventory.name == 'ItemClub':
@@ -96,6 +98,7 @@ func UseItem():
 		match inventory.name:
 			'ItemPotion':
 				set_hp(1)
+				$AudioPotion.play()
 				destroy_item()
 			'ItemClub':
 				$Club/ClubArea.disabled = false

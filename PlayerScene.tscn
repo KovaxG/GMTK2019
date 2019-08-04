@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://GFX/club.png" type="Texture" id=2]
@@ -10,10 +10,12 @@
 [ext_resource path="res://Audio/stab.wav" type="AudioStream" id=8]
 [ext_resource path="res://GFX/a_prot_1.png" type="Texture" id=9]
 [ext_resource path="res://GFX/a_prot_2.png" type="Texture" id=10]
-[ext_resource path="res://GFX/g_prot.png" type="Texture" id=11]
+[ext_resource path="res://GFX/a_prot.png" type="Texture" id=11]
 [ext_resource path="res://GFX/g_prot_1.png" type="Texture" id=12]
 [ext_resource path="res://GFX/g_prot_2.png" type="Texture" id=13]
-[ext_resource path="res://GFX/a_prot.png" type="Texture" id=14]
+[ext_resource path="res://GFX/g_prot.png" type="Texture" id=14]
+[ext_resource path="res://Audio/Armor.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/Potion.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.5084, 8.15195 )
@@ -36,7 +38,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "Standing_Naked",
+"name": "Standing_Armor",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
@@ -46,7 +48,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "Standing_Armor",
+"name": "Standing_Naked",
 "speed": 5.0
 } ]
 
@@ -123,5 +125,10 @@ stream = ExtResource( 8 )
 rotation = 3.14159
 frames = SubResource( 5 )
 animation = "Walking_Armor"
-frame = 1
 playing = true
+
+[node name="AudioArmor" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+
+[node name="AudioPotion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
