@@ -33,7 +33,6 @@ position = Vector2( 170, 128 )
 current_level = "res://Level1.tscn"
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
-max_vision_angle = 60.0
 
 [node name="Ladder" parent="." instance=ExtResource( 8 )]
 position = Vector2( 240.315, 143.792 )

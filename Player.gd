@@ -46,6 +46,7 @@ func PickUpItem(overlaps):
 		match item.name:
 			'ItemArmor':
 				set_hp(HP * 2.0)
+				V_PLAYER /= 2
 				$Sprite.texture = textures['armored']
 			'ItemClub':
 				$Club.visible = true
@@ -68,6 +69,7 @@ func DropItem():
 		
 		if inventory.name == 'ItemArmor':
 			set_hp(HP/2.0)
+			V_PLAYER *= 2
 			$Sprite.texture = textures['naked']
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
