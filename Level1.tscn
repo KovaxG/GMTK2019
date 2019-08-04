@@ -46,3 +46,4 @@ position = Vector2( 529.599, 80 )
 next_map = "res://Level2.tscn"
 
 [node name="BGM" parent="." instance=ExtResource( 10 )]
+stream_name = "res://Audio/BGM.ogg"

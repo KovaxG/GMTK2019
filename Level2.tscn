@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TileScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GFX/budi.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Armor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://BGM.tscn" type="PackedScene" id=10]
 
 [node name="World2" type="Node2D"]
 
@@ -108,3 +109,6 @@ rotation = 3.18017
 [node name="Ladder" parent="." instance=ExtResource( 9 )]
 position = Vector2( 303.742, 976.18 )
 next_map = "res://Level3.tscn"
+
+[node name="BGM" parent="." instance=ExtResource( 10 )]
+stream_name = "res://Audio/BGM.ogg"

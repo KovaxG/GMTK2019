@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 var motion = Vector2()
-
 var V_PLAYER = 100
 var control_type_relative = false
 var K_debounced = true
@@ -46,6 +45,10 @@ func _ready():
 	$Club.visible = false
 	$Club/ClubArea.disabled = true
 	$Spear.visible = false
+	control_type_relative = ProjectSettings.get('control_type_relative')
+	if control_type_relative == null:
+		control_type_relative = false
+		ProjectSettings.set('control_type_relative',false)
 
 func PickUpItem(overlaps):
 	get_viewport_rect().position = Vector2(200,200)
@@ -166,6 +169,7 @@ func handle_keyboard():
 	if Input.is_key_pressed(KEY_K):
 		if K_debounced:
 			control_type_relative = not control_type_relative
+			ProjectSettings.set('control_type_relative',control_type_relative)
 			K_debounced = false
 	else:
 		K_debounced = true
