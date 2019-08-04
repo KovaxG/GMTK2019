@@ -25,8 +25,68 @@ rotation = 3.14159
 scale = Vector2( 1.37389, 1.50711 )
 texture = ExtResource( 2 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayTarget0" type="RayCast2D" parent="."]
 position = Vector2( -0.524475, 10.4895 )
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget1" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = 0.785398
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget2" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = -0.523599
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget3" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = -0.261799
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget4" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = -0.785398
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget5" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = 0.523599
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget6" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = 0.261799
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget7" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = 1.0472
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget8" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = -1.0472
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget9" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = -1.309
+enabled = true
+cast_to = Vector2( 0, 300 )
+
+[node name="RayTarget10" type="RayCast2D" parent="."]
+position = Vector2( -0.524475, 10.4895 )
+rotation = 1.309
 enabled = true
 cast_to = Vector2( 0, 300 )
 

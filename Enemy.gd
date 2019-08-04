@@ -4,7 +4,7 @@ var motion = Vector2()
 var target = null
 var speed = 100
 var swing_left = true
-
+export (float) var max_vision_angle = 45.0
 var hp = 1
 var alerted = false
 
@@ -61,7 +61,9 @@ func swing_weapon():
 	
 		
 func look_for_target():
-	if $RayCast2D.is_colliding():
-		var object = $RayCast2D.get_collider()
-		if object.name == "Player":
-			target = object
+	for child in get_children():
+		if 'RayTarget' in child.name and abs(child.rotation)<=deg2rad(max_vision_angle+1):#For floating point conversion
+			if child.is_colliding():
+				var object = child.get_collider()
+				if object.name == "Player":
+					target = object
