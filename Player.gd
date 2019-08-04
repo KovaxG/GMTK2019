@@ -124,8 +124,6 @@ func destroy_item():
 func _physics_process(delta):
 	$Club/ClubArea.disabled = true
 	
-	
-	
 	rotate_to_mouse()
 	handle_motion()
 		
