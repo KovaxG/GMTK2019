@@ -117,6 +117,7 @@ func destroy_item():
 	inventory = null
 
 func _physics_process(delta):
+	$Club/ClubArea.disabled = true
 	if died:
 		motion = Vector2(0,0)
 		if not $AudioDeath.is_playing():
@@ -124,7 +125,6 @@ func _physics_process(delta):
 	else:
 		rotate_to_mouse()
 		handle_motion()
-	$Club/ClubArea.disabled = true
 	
 		
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
