@@ -7,9 +7,7 @@
 [ext_resource path="res://Club.tscn" type="PackedScene" id=5]
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy1.tscn" type="PackedScene" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+[ext_resource path="res://Ladder.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
@@ -31,12 +29,10 @@ position = Vector2( 149.269, 53.5195 )
 rotation = 0.785398
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+current_level = "res://Level1.tscn"
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 
-[node name="Ladder" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
-position = Vector2( 239.918, 144.586 )
-shape = SubResource( 1 )
-[connection signal="body_entered" from="Ladder" to="Player" method="_on_Ladder_body_entered"]
+[node name="Ladder" parent="." instance=ExtResource( 8 )]
+position = Vector2( 240.315, 143.792 )
+next_map = "res://Level2.tscn"

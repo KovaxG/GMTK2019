@@ -13,7 +13,7 @@ func set_hp(val):
 
 
 var left_holding = false
-var current_level = 1
+export(String, FILE, '*.tscn') var current_level
 
 var textures = {'naked':load("res://GFX/g_prot.png"),
 				'armored':load("res://GFX/a_prot.png"),
@@ -179,13 +179,8 @@ func handle_motion():
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
 	
 	
-func CompleteLevel():
-	current_level += 1
-	get_tree().change_scene('Level' + str(current_level) + '.tscn')
 	
 func Lose():
-	get_tree().change_scene('Level' + str(current_level) + '.tscn')
+	get_tree().change_scene(current_level)
 
-func _on_Ladder_body_entered(body):
-	if body.name == 'Player':
-		CompleteLevel()
+
