@@ -5,7 +5,7 @@ var V_PLAYER = 100
 var control_type_relative = false
 var K_debounced = true
 var died = false
-
+var armored = false
 
 var HP = 1.0 setget set_hp
 func set_hp(val):
@@ -34,6 +34,7 @@ var recently_picked_up = false
 var throw_spear = false
 
 func _ready():
+	$AnimatedSprite.animation = "Standing_Naked"
 	$Club.visible = false
 	$Club/ClubArea.disabled = true
 	$Spear.visible = false
@@ -58,7 +59,7 @@ func PickUpItem(overlaps):
 			'ItemArmor':
 				set_hp(HP * armor_coeff)
 				V_PLAYER = 68
-				$Sprite.texture = textures['armored']
+				armored = true
 			'ItemClub':
 				$Club.visible = true
 			'ItemSpear','ItemSpear2':
@@ -81,7 +82,7 @@ func DropItem():
 		if inventory.name == 'ItemArmor':
 			set_hp(HP/armor_coeff)
 			V_PLAYER = 100
-			$Sprite.texture = textures['naked']
+			armored = false
 		elif inventory.name == 'ItemClub':
 			$Club.visible = false
 		elif 'ItemSpear' in inventory.name:
@@ -201,6 +202,16 @@ func handle_motion():
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		DropItem()
 		
+	if motion.x != 0 || motion.y != 0:
+		if armored:
+			$AnimatedSprite.animation = "Walking_Armor"
+		else:	
+			$AnimatedSprite.animation = "Walking_Naked"
+	else:
+		if armored:
+			$AnimatedSprite.animation = "Standing_Armor"
+		else:
+			$AnimatedSprite.animation = "Standing_Naked"
 	motion = move_and_slide(motion)
 	
 	get_parent().find_node("LabelHP").text = 'HP: '+ str(HP)
