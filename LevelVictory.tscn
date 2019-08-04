@@ -1,16 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TileScene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://BGM.tscn" type="PackedScene" id=2]
-[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://LabelVictory.gd" type="Script" id=2]
+[ext_resource path="res://GFX/backpaq.png" type="Texture" id=3]
+[ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BGM.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 15 )
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65537, 26, 0, 65538, 8, 0, 65539, 26, 0, 65540, 25, 0, 65541, 25, 0, 65542, 26, 0, 65543, 8, 0, 65544, 26, 0, 65545, 0, 0, 131072, 0, 0, 131073, 26, 0, 131074, 26, 0, 131075, 26, 0, 131076, 25, 0, 131077, 8, 0, 131078, 26, 0, 131079, 26, 0, 131080, 26, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 196608, 0, 0, 196609, 8, 0, 196610, 26, 0, 196611, 8, 0, 196612, 25, 0, 196613, 25, 0, 196614, 8, 0, 196615, 26, 0, 196616, 8, 0, 196617, 8, 0, 196618, 8, 0, 196619, 0, 0, 262144, 0, 0, 262145, 8, 0, 262146, 26, 0, 262147, 8, 0, 262148, 25, 0, 262149, 8, 0, 262150, 8, 0, 262151, 26, 0, 262152, 8, 0, 262153, 9, 0, 262154, 8, 0, 262155, 0, 0, 327680, 0, 0, 327681, 8, 0, 327682, 26, 0, 327683, 8, 0, 327684, 25, 0, 327685, 25, 0, 327686, 8, 0, 327687, 26, 0, 327688, 8, 0, 327689, 8, 0, 327690, 8, 0, 327691, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65537, 9, 0, 65538, 8, 0, 65539, 9, 0, 65540, 3, 0, 65541, 3, 0, 65542, 9, 0, 65543, 8, 0, 65544, 9, 0, 65545, 0, 0, 131072, 0, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 3, 0, 131077, 8, 0, 131078, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 196608, 0, 0, 196609, 8, 0, 196610, 9, 0, 196611, 8, 0, 196612, 3, 0, 196613, 3, 0, 196614, 8, 0, 196615, 9, 0, 196616, 8, 0, 196617, 8, 0, 196618, 8, 0, 196619, 8, 0, 196620, 8, 0, 196621, 8, 0, 196622, 8, 0, 196623, 8, 0, 196624, 25, 0, 196625, 26, 0, 196626, 26, 0, 196627, 25, 0, 196628, 25, 0, 196629, 0, 0, 262144, 0, 0, 262145, 8, 0, 262146, 9, 0, 262147, 8, 0, 262148, 3, 0, 262149, 8, 0, 262150, 8, 0, 262151, 9, 0, 262152, 8, 0, 262153, 24, 0, 262154, 8, 0, 262155, 8, 0, 262156, 8, 0, 262157, 8, 0, 262158, 8, 0, 262159, 8, 0, 262160, 8, 0, 262161, 8, 0, 262162, 8, 0, 262163, 8, 0, 262164, 8, 0, 262165, 0, 0, 327680, 0, 0, 327681, 8, 0, 327682, 9, 0, 327683, 8, 0, 327684, 3, 0, 327685, 3, 0, 327686, 8, 0, 327687, 9, 0, 327688, 8, 0, 327689, 8, 0, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327693, 8, 0, 327694, 8, 0, 327695, 8, 0, 327696, 8, 0, 327697, 8, 0, 327698, 8, 0, 327699, 8, 0, 327700, 8, 0, 327701, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0 )
 
-[node name="BGM" parent="." instance=ExtResource( 2 )]
-stream_name = "res://Audio/Victory.ogg"
+[node name="LabelVictory" type="Label" parent="."]
+margin_left = 338.292
+margin_top = 100.615
+margin_right = 701.292
+margin_bottom = 199.615
+text = "You found the BackPaQ
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+Too bad the ladders are too short for you to climb 
+back, so now you are stuck here. At least there's 
+some paper on the desk to write your memoire..."
+script = ExtResource( 2 )
+
+[node name="AreaVictory" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVictory"]
+position = Vector2( 303.898, 143.736 )
+shape = SubResource( 1 )
+
+[node name="Backpack" type="Sprite" parent="AreaVictory"]
+position = Vector2( 304.925, 143.736 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 55.7917, 49.4588 )
+
+[node name="BGM" parent="." instance=ExtResource( 5 )]
+stream_name = "res://Audio/Victory.ogg"
+[connection signal="body_entered" from="AreaVictory" to="LabelVictory" method="_on_AreaVictory_body_entered"]
